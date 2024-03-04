@@ -1,0 +1,56 @@
+server:
+  port: 8088
+  tomcat:
+    uri-encoding: UTF-8
+    threads:
+      max: 1000
+      min-spare: 30
+  servlet:
+    context-path: /springServer
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml
+  type-aliases-package: com.example.demo.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+mybatis-plus:
+  mapper-locations: classpath:mapper/**/*.xml
+  type-aliases-package: com.example.demo.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/mzh?characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: rootpassword
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/mzh?characterEncoding=utf8&serverTimezone=UTC
+      username: root
+      password: rootpassword
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: true
+      testOnReturn: true
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      useGlobalDataSourceStat: true
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+      filters: stat,wall,log4j
+  thymeleaf:
+    cache: false
+    encoding: UTF-8
+    mode: HTML5
+    suffix: .html
+    prefix: classpath:/templates/
+    servlet:
+      content-type: text/html
